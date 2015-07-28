@@ -22,7 +22,7 @@ var server = net.createServer(function(c) {
         console.log('Number of clients: ', counter);
     };
 
-    c.write('Hello! This is the Magic 8-Ball Server!\r\nPlease ask a question and I will predict your future');       
+    c.write('Hello! This is the Magic 8-Ball Server!\r\nPlease ask a question and I will predict your future\r\n');       
     
     c.on('data', function (data) {
         //var input = data.toString().trim();
