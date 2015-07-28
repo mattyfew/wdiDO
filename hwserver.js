@@ -22,7 +22,7 @@ var server = net.createServer(function (socket) {
     };
 
     //  Welcome Message to socket
-    socket.write('Hello!', socket.name, 'Welcome to the MF Chat Room!\r\n');
+    socket.write('Welcome to the MF Chat Room!\r\n');
     //  Broadcast to chat
     broadcast(socket.name + " joined the chat\n", socket);
 
