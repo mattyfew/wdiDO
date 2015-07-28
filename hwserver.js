@@ -14,7 +14,7 @@ var clients = [];
 var server = net.createServer(function (socket) {
     if (this.createServer = true) {
         console.log('client connected');
-        console.log('Number of clients in the chat: ', counter);
+        //console.log('Number of clients in the chat: ', counter);
 
         //Identifies client, gives him a name of IP ADDRESS:PORT
         socket.name = socket.remoteAddress + ":" + socket.remotePort;
@@ -46,7 +46,7 @@ var server = net.createServer(function (socket) {
         // Log it to the server output too
         process.stdout.write(message)
     }
-}).listen(5000);
+});
 
 server.listen(port, function () {
     console.log('listening on ' + port);
