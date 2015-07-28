@@ -8,34 +8,47 @@
 
 var net = require('net');
 var port = 3000;
-var counter = 0;
+
 var clients = [];
 
-var server = net.createServer(function(c) {
+var server = net.createServer(function (socket) {
     if (this.createServer = true) {
         console.log('client connected');
         counter++;
         console.log('Number of clients in the chat: ', counter);
-        
+
         //Identifies client, gives him a name of IP ADDRESS:PORT
-        c.ip = socket.remoteAddress + ":" + socket.remotePort;
-        clients.push(c);
-        
+        socket.name = socket.remoteAddress + ":" + socket.remotePort;
+        clients.push(socket);
     };
 
-    c.write('Hello!', socket.name, 'Welcome to the MF Chat Room!\r\n');       
+    //  Welcome Message to socket
+    socket.write('Hello!', socket.name, 'Welcome to the MF Chat Room!\r\n');
+    //  Broadcast to chat
+    broadcast(socket.name + " joined the chat\n", socket);
 
-    c.on('data', function (data) {
-        var input = data.toString().trim();
-        c.write( + "/r/n");
+    socket.on('data', function (data) {
+        broadcast(socket.name + ": " + data, socket);
     });
 
-    c.on('end', function() {
-        console.log('client disconnected');
-        counter--;
+    // Remove the client from the list when it leaves
+    socket.on('end', function () {
+        clients.splice(clients.indexOf(socket), 1);
+        broadcast(socket.name + " left the chat.\n");
     });
-});
 
-server.listen(port, function() {
+    // Send a message to all clients
+    function broadcast(message, sender) {
+        clients.forEach(function (client) {
+            // Don't want to send it to sender
+            if (client === sender) return;
+            client.write(message);
+        });
+        // Log it to the server output too
+        process.stdout.write(message)
+    }
+}).listen(5000);
+
+server.listen(port, function () {
     console.log('listening on ' + port);
 });
