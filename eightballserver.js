@@ -27,7 +27,7 @@ var server = net.createServer(function(c) {
     c.on('data', function (data) {
         //var input = data.toString().trim();
         var yourFortune = fortunes[(Math.floor(Math.random() * fortunes.length))];
-        c.write(yourFortune.toString());
+        c.write(yourFortune.toString() + "/r/n");
     });
 
     c.on('end', function() {
