@@ -14,7 +14,6 @@ var clients = [];
 var server = net.createServer(function (socket) {
     if (this.createServer = true) {
         console.log('client connected');
-        counter++;
         console.log('Number of clients in the chat: ', counter);
 
         //Identifies client, gives him a name of IP ADDRESS:PORT
