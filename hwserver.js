@@ -8,7 +8,7 @@
 
 var net = require('net');
 var port = 3000;
-
+var chalk = require('chalk');
 var clients = [];
 
 var server = net.createServer(function (socket) {
@@ -27,7 +27,7 @@ var server = net.createServer(function (socket) {
     broadcast(socket.name + " joined the chat\n", socket);
 
     socket.on('data', function (data) {
-        broadcast(socket.name + ": " + data, socket);
+        broadcast(chalk.red(socket.name) + ": " + data, socket);
     });
 
     // Remove the client from the list when it leaves
