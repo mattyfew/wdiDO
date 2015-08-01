@@ -1,0 +1,21 @@
+{
+  "name": "matt",
+  "version": "1.0.0",
+  "description": "post office homework",
+  "main": "expressserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "diana_students"
+  },
+  "keywords": [
+    "express",
+    "POST",
+    "GET",
+    "HTTP"
+  ],
+  "author": "matt",
+  "license": "ISC"
+}
