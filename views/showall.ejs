@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Letter</title>
+        <link rel="stylesheet" href="css/foundation.css">
+        <link rel="stylesheet" href="css/app.css">
+        <script src="js/vendor/modernizr.js"></script>
+    </head>
+    <body>
+      <% include nav.html.ejs %>
+      <% letters.forEach(function(letter){ %>
+        <h1>Your Letter <% letter.id %> </h1>
+        <p>From:&nbsp<%= letter.name %></p>
+        <p>Date:&nbsp<%= letter.date %></p>
+        <p>Address:&nbsp<%= letter.address %></p>
+        <p>Letter:&nbsp<%= letter.letter %></p>
+      <% }); %>
+      
+        <script src="js/vendor/jquery.js"></script>
+        <script src="js/foundation.min.js"></script>
+        <script>
+            $(document).foundation();
+        </script>
+    </body>
+</html>
